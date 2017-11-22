@@ -11,10 +11,13 @@ namespace Prototype
 {
     public partial class ProductsListPage : ContentPage
     {
+
+  
         public ObservableCollection<ProductModel> ProductList { get; set; }
         public ProductsListPage()
-        {
+        {  
             Title = "Products";
+
             
             ProductList = new ObservableCollection<ProductModel>();
 
@@ -22,7 +25,7 @@ namespace Prototype
             {
                 string path = "icon.png";
                 string a = Convert.ToString(i);
-                ProductModel product = new ProductModel { Name = "ProductPrice №:" + a, Category = "ProductCategory №:"+ a, Price = i + 100, ImagePath = path };
+                ProductModel product = new ProductModel { Name = "ProductPrice №:" + a, Category = "ProductCategory №:"+ a, Price = i + 100, ImagePath = path, Description = "Description: this.Content = GridLayout; this.Content = GridLayout; this.Content = GridLayout; this.Content = GridLayout; this.Content = GridLayout; this.Content = GridLayout; this.Content = GridLayout; this.Content = GridLayout; " + a };
                 ProductList.Add(product);
             }
             InitializeComponent();

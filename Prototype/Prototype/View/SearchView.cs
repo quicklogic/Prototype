@@ -15,8 +15,12 @@ namespace Prototype
         {
             Color color = Color.FromHex("#26A69A");
             Button searchBtn = new Button { Text = "Найти"};
-            Entry searchEntry = new Entry {HorizontalOptions = LayoutOptions.FillAndExpand };
-
+            Entry searchEntry = new Entry
+            {     
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                
+            };
+            
             searchBtn.Clicked += (sender, e) => Search?.Invoke(searchEntry.Text);
             Content = new StackLayout
             {

@@ -17,9 +17,9 @@
                         </Grid.ColumnDefinitions>
 
                         <Image Source="{Binding ImagePath}" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="200" HeightRequest="200" Grid.Column="0"/>
-                                <Label Text="{Binding Name}" YAlign ="Start" XAlign="Center"  Grid.Column="1" TextColor="White" FontSize="Medium"/>
-                                <Label Text="{Binding Category}" YAlign ="Center" XAlign="Center"  Grid.Column="1" TextColor="White" FontSize="Medium"/>
-                                <Label Text="{Binding Price}"  YAlign ="End"  FontSize="Medium"  XAlign="Center"  Grid.Column="1" TextColor="White"/>
+                                <Label Text="{Binding Name}" YAlign ="Start" XAlign="Center"  Grid.Column="1" FontSize="Medium"/>
+                                <Label Text="{Binding Category}" YAlign ="Center" XAlign="Center"  Grid.Column="1" FontSize="Medium"/>
+                                <Label Text="{Binding Price}"  YAlign ="End"  FontSize="Medium"  XAlign="Center"  Grid.Column="1"/>
 
 
                     </Grid>
