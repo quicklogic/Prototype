@@ -11,25 +11,34 @@ namespace Prototype
 {
     public partial class ProductsListPage : ContentPage
     {
+        DBService dBService = new DBService();
 
-  
-        public ObservableCollection<ProductModel> ProductList { get; set; }
+
+
+        ObservableCollection<ProductModel> Products = new ObservableCollection<ProductModel>();
+
+
+
         public ProductsListPage()
         {  
             Title = "Products";
-
             
-            ProductList = new ObservableCollection<ProductModel>();
+            
+            Products = new ObservableCollection<ProductModel>();
 
-            for (int i = 0; i < 40; i++)
-            {
-                string path = "icon.png";
-                string a = Convert.ToString(i);
-                ProductModel product = new ProductModel { Name = "ProductPrice №:" + a, Category = "ProductCategory №:"+ a, Price = i + 100, ImagePath = path, Description = "Description: this.Content = GridLayout; this.Content = GridLayout; this.Content = GridLayout; this.Content = GridLayout; this.Content = GridLayout; this.Content = GridLayout; this.Content = GridLayout; this.Content = GridLayout; " + a };
-                ProductList.Add(product);
-            }
+            //for (int i = 0; i < 40; i++)
+            //{
+            //    string path = "icon.png";
+            //    string a = Convert.ToString(i);
+            //    ProductModel product = new ProductModel { Name = "ProductPrice №:" + a, Category = "ProductCategory №:"+ a, Price = i + 100, ImagePath = path, Description = "Description: this.Content = GridLayout; this.Content = GridLayout; this.Content = GridLayout; this.Content = GridLayout; this.Content = GridLayout; this.Content = GridLayout; this.Content = GridLayout; this.Content = GridLayout; " + a };
+            //    ProductList.Add(product);
+            //}
+           
+            
             InitializeComponent();
-            ProductGrid.ItemsSource = ProductList;
+            Task getproducts = GetProducts();
+            getproducts.Wait();
+            ProductGrid.ItemsSource = Products;
             GridLayout.Children.Add(ProductGrid);
             this.Content = GridLayout;
             ProductGrid.ItemSelected += ProductGrid_ItemSelected;
@@ -57,11 +66,25 @@ namespace Prototype
         {
             if (!string.IsNullOrEmpty(text))
             {
-                ProductGrid.ItemsSource = ProductList.Where(u => u.Name.Contains(text));
+                ProductGrid.ItemsSource = Products.Where(u => u.Name.Contains(text));
             }
             else
             {
-                ProductGrid.ItemsSource = ProductList;
+                ProductGrid.ItemsSource = Products;
+            }
+        }
+
+        private async Task GetProducts()
+        {
+
+            IEnumerable<ProductModel> product = await dBService.Get();
+            //while (Products.Any())
+            //{
+            //    Products.RemoveAt(Products.Count - 1);
+            //}
+            foreach (ProductModel p in product)
+            {
+                Products.Add(p);
             }
         }
 

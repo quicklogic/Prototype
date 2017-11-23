@@ -12,13 +12,7 @@ namespace Prototype
         static MasterDetailPage MDPage;
         public static Page GetMainPage()
         {
-            var toolbarItem = new ToolbarItem
-            {
-                 Text = "+", 
-                 Icon = Device.RuntimePlatform == Device.Android ? null : "search.png"
-             };
-
-       
+        
 
             return MDPage = new MasterDetailPage
             {
